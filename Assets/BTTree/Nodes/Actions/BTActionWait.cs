@@ -8,7 +8,7 @@ namespace XNode.BTTree.Actions
 { 
 	public class BTActionWait : BaseBTLeaf
 	{
-		public BTDataBaseKey Time;
+		public BTDatabaseKey Time;
 
 		// Use this for initialization
 		protected override void Init() {

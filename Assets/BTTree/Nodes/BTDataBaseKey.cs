@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace XNode.BTTree
 {
-    public enum BTDataBaseKey
+    public enum BTDatabaseKey
     {
         DelayTime,
     }
