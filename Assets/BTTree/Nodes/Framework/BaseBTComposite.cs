@@ -4,7 +4,8 @@ using UnityEngine;
 using XNode;
 
 namespace XNode.BTTree.Framework
-{ 
+{
+	[NodeTint(70, 70, 100)]
 	public class BaseBTComposites : BaseBTNode
 	{
 		[Output]

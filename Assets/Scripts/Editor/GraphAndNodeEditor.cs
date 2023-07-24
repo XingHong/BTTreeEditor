@@ -27,6 +27,10 @@ namespace XNodeEditor {
                 NodeEditorWindow.Open(serializedObject.targetObject as XNode.NodeGraph);
             }
 
+            if (GUILayout.Button("Export json", GUILayout.Height(40)))
+            {
+            }
+
             GUILayout.Space(EditorGUIUtility.singleLineHeight);
             GUILayout.Label("Raw data", "BoldLabel");
 

@@ -6,6 +6,7 @@ using XNode.BTTree.Framework;
 
 namespace XNode.BTTree.Actions
 { 
+	[NodeWidth(120)]
 	public class BTHit : BaseBTLeaf
 	{
 		// Use this for initialization
