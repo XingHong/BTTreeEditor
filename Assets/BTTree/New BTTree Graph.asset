@@ -114,10 +114,10 @@ MonoBehaviour:
       _typeQualifiedName: XNode.Node, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: Parent
-        node: {fileID: 1597855887904624063}
+        node: {fileID: 8921650018488285778}
         reroutePoints: []
       - fieldName: Parent
-        node: {fileID: 8921650018488285778}
+        node: {fileID: 1597855887904624063}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: BT Action Wait
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 216, y: -168}
+  position: {x: 232, y: -152}
   ports:
     keys:
     - Parent
