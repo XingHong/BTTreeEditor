@@ -6,7 +6,8 @@ using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
 #endif
 
-namespace XNodeEditor {
+namespace XNodeEditor
+{
     /// <summary> Override graph inspector to show an 'Open Graph' button at the top </summary>
     [CustomEditor(typeof(XNode.NodeGraph), true)]
 #if ODIN_INSPECTOR
@@ -29,6 +30,8 @@ namespace XNodeEditor {
 
             if (GUILayout.Button("Export json", GUILayout.Height(40)))
             {
+                var graph = serializedObject.targetObject as XNode.NodeGraph;
+                graph.ExportData();
             }
 
             GUILayout.Space(EditorGUIUtility.singleLineHeight);

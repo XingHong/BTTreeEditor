@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XNode;
+using SimpleJSON;
 
 namespace XNode.BTTree
 { 
@@ -13,5 +14,12 @@ namespace XNode.BTTree
 		{
 			this.root = root;
 		}
-	}
+
+        public override void ExportData()
+        {
+			var finalData = this.root.GetRootData();
+			//JSON.
+			Debug.Log(finalData);
+		}
+    }
 }

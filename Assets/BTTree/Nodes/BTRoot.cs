@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XNode;
+using XNode.BTTree.Framework;
+using SimpleJSON;
 
 namespace XNode.BTTree
 { 
 	public class BTRoot : Node {
 
 		[Space(5)]
-		public string skillName;
+		public string SkillName;
 		[Output] 
 		public Node Child;
+
 		// Use this for initialization
 		protected override void Init() {
 			base.Init();
-			skillName = "New Skill";
+			SkillName = graph.name;
 		}
 
 		protected virtual void OnInputChanged()
@@ -37,22 +40,19 @@ namespace XNode.BTTree
 			return null; // Replace this
 		}
 
-		public string GenJson()
+		public JSONObject GetRootData()
 		{
+			var rootData = new JSONObject();
+			rootData[nameof(SkillName)] = SkillName;
+			rootData["Root"] = "Root";
 			var np = GetPort("Child");
 			var connections = np.GetConnections();
-			foreach (var p in connections)
-			{
-				Debug.Log($">>>>pos:{p.node.position}, name:{p.node.name}");
+			if (connections.Count > 0)
+			{ 
+				var node = connections[0].node as BaseBTNode;
+				rootData["Child"] = node.GetNodeData();
 			}
-
-			connections.Sort((NodePort x, NodePort y) => { return x.node.position.y > y.node.position.y ? 1 : -1; });
-
-			foreach (var p in connections)
-			{
-				Debug.Log($"sort>>>>pos:{p.node.position}, name:{p.node.name}");
-			}
-			return "";
+			return rootData;
 		}
 	}
 }

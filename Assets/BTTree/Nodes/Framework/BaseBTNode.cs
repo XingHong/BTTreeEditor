@@ -2,16 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XNode;
+using SimpleJSON;
 
 namespace XNode.BTTree.Framework
 { 
-	public class BaseBTNode : Node {
+	public class BaseBTNode : Node, IDataExport
+	{
 
 		[Input]
 		public Node Parent;
+
+		//node info
+		protected string TypeName;
+        protected JSONObject Data;
+
 		// Use this for initialization
 		protected override void Init() {
 			base.Init();
+			TypeName = GetType().Name;
 		}
 
 		protected virtual void OnInputChanged()
@@ -33,5 +41,12 @@ namespace XNode.BTTree.Framework
 		public override object GetValue(NodePort port) {
 			return null; // Replace this
 		}
-	}
+
+        public virtual JSONObject GetNodeData()
+        {
+			Data = new JSONObject();
+			Data[nameof(TypeName)] = TypeName;
+			return Data;
+        }
+    }
 }

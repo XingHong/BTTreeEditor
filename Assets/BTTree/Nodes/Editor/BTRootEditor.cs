@@ -13,7 +13,7 @@ namespace XNode.BTTree.Editor
             base.OnBodyGUI();
             BTRoot node = target as BTRoot;
             BTTreeGraph graph = node.graph as BTTreeGraph;
-            node.skillName = graph.name;
+            node.SkillName = graph.name;
             if (graph.root == null)
             {
                 graph.AddRoot(node);

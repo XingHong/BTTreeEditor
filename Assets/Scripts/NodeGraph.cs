@@ -77,6 +77,11 @@ namespace XNode {
             return graph;
         }
 
+        //--add by xinghong
+        public virtual void ExportData()
+        { 
+        }
+
         protected virtual void OnDestroy() {
             // Remove all nodes prior to graph destruction
             Clear();

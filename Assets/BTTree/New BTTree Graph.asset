@@ -25,18 +25,85 @@ MonoBehaviour:
       - fieldName: Parent
         node: {fileID: 1310101427251055310}
         reroutePoints: []
-      - fieldName: Parent
-        node: {fileID: 397525716387819239}
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  SkillName: New BTTree Graph
+  Child: {fileID: 0}
+--- !u!114 &-6590935212066437872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287be167807818b478446ba94d93d1ee, type: 3}
+  m_Name: BT Hit
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 312, y: 40}
+  ports:
+    keys:
+    - Parent
+    values:
+    - _fieldName: Parent
+      _node: {fileID: -6590935212066437872}
+      _typeQualifiedName: XNode.Node, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: Children
+        node: {fileID: -5798898988214312429}
         reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  Parent: {fileID: 0}
+--- !u!114 &-5798898988214312429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3202f54990b21334dbc87089451d30e9, type: 3}
+  m_Name: BT Sequence
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 88, y: 8}
+  ports:
+    keys:
+    - Children
+    - Parent
+    values:
+    - _fieldName: Children
+      _node: {fileID: -5798898988214312429}
+      _typeQualifiedName: XNode.Node, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
       - fieldName: Parent
-        node: {fileID: 2745247163039272747}
+        node: {fileID: -6590935212066437872}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  skillName: New BTTree Graph
-  Child: {fileID: 0}
+    - _fieldName: Parent
+      _node: {fileID: -5798898988214312429}
+      _typeQualifiedName: XNode.Node, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: Children
+        node: {fileID: 1310101427251055310}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  Parent: {fileID: 0}
+  Children: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,49 +121,9 @@ MonoBehaviour:
   - {fileID: 1597855887904624063}
   - {fileID: 8921650018488285778}
   - {fileID: 1310101427251055310}
-  - {fileID: 397525716387819239}
-  - {fileID: 2745247163039272747}
+  - {fileID: -5798898988214312429}
+  - {fileID: -6590935212066437872}
   root: {fileID: -7453757350730396203}
---- !u!114 &397525716387819239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32addfbdc6bf534599f8b0f9ff2df13, type: 3}
-  m_Name: BT Parallel Or
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -104, y: -104}
-  ports:
-    keys:
-    - Children
-    - Parent
-    values:
-    - _fieldName: Children
-      _node: {fileID: 397525716387819239}
-      _typeQualifiedName: XNode.Node, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: Parent
-      _node: {fileID: 397525716387819239}
-      _typeQualifiedName: XNode.Node, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: Child
-        node: {fileID: -7453757350730396203}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  Parent: {fileID: 0}
-  Children: {fileID: 0}
 --- !u!114 &1310101427251055310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +137,7 @@ MonoBehaviour:
   m_Name: BT Parallel And
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -104, y: -216}
+  position: {x: -120, y: -88}
   ports:
     keys:
     - Children
@@ -125,6 +152,9 @@ MonoBehaviour:
         reroutePoints: []
       - fieldName: Parent
         node: {fileID: 8921650018488285778}
+        reroutePoints: []
+      - fieldName: Parent
+        node: {fileID: -5798898988214312429}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -156,7 +186,7 @@ MonoBehaviour:
   m_Name: BT Hit
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 168, y: -168}
+  position: {x: 216, y: -152}
   ports:
     keys:
     - Parent
@@ -173,37 +203,6 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   Parent: {fileID: 0}
---- !u!114 &2745247163039272747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09640985d8e36644a8593c0d2136a12, type: 3}
-  m_Name: BT Action Wait
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -120, y: 24}
-  ports:
-    keys:
-    - Parent
-    values:
-    - _fieldName: Parent
-      _node: {fileID: 2745247163039272747}
-      _typeQualifiedName: XNode.Node, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: Child
-        node: {fileID: -7453757350730396203}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  Parent: {fileID: 0}
-  Time: 0
 --- !u!114 &8921650018488285778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +216,7 @@ MonoBehaviour:
   m_Name: BT Action Wait
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 152, y: -280}
+  position: {x: 184, y: -280}
   ports:
     keys:
     - Parent
