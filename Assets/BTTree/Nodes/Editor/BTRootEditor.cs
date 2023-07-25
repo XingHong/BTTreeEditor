@@ -25,7 +25,14 @@ namespace XNode.BTTree.Editor
             base.OnCreate();
             BTRoot node = target as BTRoot;
             BTTreeGraph graph = node.graph as BTTreeGraph;
-            if (graph.root != null)
+            var nodes = graph.nodes;
+            int cnt = 0;
+            foreach (var n in nodes)
+            {
+                if (n is BTRoot)
+                    ++cnt;
+            }
+            if (cnt > 1)
             {
                 Debug.LogError("Only one root!");
             }

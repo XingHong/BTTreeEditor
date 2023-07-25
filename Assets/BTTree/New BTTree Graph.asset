@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: BT Hit
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 312, y: 40}
+  position: {x: 360, y: 8}
   ports:
     keys:
     - Parent
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: BT Parallel And
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -120, y: -88}
+  position: {x: -136, y: -120}
   ports:
     keys:
     - Children
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Name: BT Hit
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 216, y: -152}
+  position: {x: 328, y: -152}
   ports:
     keys:
     - Parent
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: BT Action Wait
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 184, y: -280}
+  position: {x: 264, y: -296}
   ports:
     keys:
     - Parent
