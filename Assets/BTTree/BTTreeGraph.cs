@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using XNode;
 using SimpleJSON;
+using System.IO;
+using UnityEditor;
+using System;
 
 namespace XNode.BTTree
 { 
@@ -19,7 +22,13 @@ namespace XNode.BTTree
         {
 			var finalData = this.root.GetRootData();
 			//JSON.
-			Debug.Log(finalData);
+			//Debug.Log(finalData);
+			string path = Path.Combine(Application.dataPath, $"BTTreeJson/{this.root.SkillName}.json");
+			StreamWriter sw = new StreamWriter(path);
+			string jsonStr = finalData.ToString() + Environment.NewLine;
+			sw.Write(jsonStr);
+			sw.Close();
+			AssetDatabase.Refresh();
 		}
     }
 }

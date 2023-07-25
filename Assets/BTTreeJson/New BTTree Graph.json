@@ -1,0 +1,1 @@
+{"SkillName":"New BTTree Graph","Root":"Root","Child":{"TypeName":"BTParallelAnd","Children":[{"TypeName":"BTActionWait","Time":"DelayTime"},{"TypeName":"BTHit"},{"TypeName":"BTSequence","Children":[{"TypeName":"BTHit"}]}]}}
