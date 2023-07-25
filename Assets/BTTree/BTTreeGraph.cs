@@ -21,8 +21,6 @@ namespace XNode.BTTree
         public override void ExportData()
         {
 			var finalData = this.root.GetRootData();
-			//JSON.
-			//Debug.Log(finalData);
 			string path = Path.Combine(Application.dataPath, $"BTTreeJson/{this.root.SkillName}.json");
 			StreamWriter sw = new StreamWriter(path);
 			string jsonStr = finalData.ToString() + Environment.NewLine;
