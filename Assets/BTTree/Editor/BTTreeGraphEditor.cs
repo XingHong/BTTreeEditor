@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XNodeEditor;
 using XNode.BTTree;
+using System;
 
 namespace XNode.BTTree
 { 
@@ -16,12 +17,22 @@ namespace XNode.BTTree
 		/// </summary>
 		public override string GetNodeMenuName(System.Type type)
 		{
-			if (type.Namespace.Contains("XNode.BTTree") && !type.Namespace.Contains("XNode.BTTree.Framework"))
+			try
 			{
-				var tmp = base.GetNodeMenuName(type);
-				return base.GetNodeMenuName(type).Replace("X Node/BT Tree/", "");
+				if (type.FullName.Contains("BTTestAction"))
+					return base.GetNodeMenuName(type);
+				if (type.Namespace.Contains("XNode.BTTree") && !string.IsNullOrEmpty(type.Namespace) && !type.Namespace.Contains("XNode.BTTree.Framework"))
+				{
+					var tmp = base.GetNodeMenuName(type);
+					return base.GetNodeMenuName(type).Replace("X Node/BT Tree/", "");
+				}
 			}
-			else return null;
+			catch (Exception ex)
+			{
+				return null;
+			}
+
+			return null;
 		}
 	}
 }
