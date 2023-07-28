@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System;
 using XNode.BTTree.Framework;
+using UnityEditor;
 
 public class PropertyBuilderUtils
 {
@@ -118,5 +119,46 @@ public class PropertyBuilderUtils
         // or referenced by a test program.
         myAsmBuilder.Save(myAsmName.Name + ".dll");
         return retval;
+    }
+
+    [MenuItem("Assets/Build BTTreeNodeAssembly")]
+    public static void BuildBTTreeNodeTypes()
+    {
+        AppDomain myDomain = Thread.GetDomain();
+        AssemblyName myAsmName = new AssemblyName();
+        myAsmName.Name = "BTTreeNodeAssembly";
+
+        // To generate a persistable assembly, specify AssemblyBuilderAccess.RunAndSave.
+        AssemblyBuilder myAsmBuilder = myDomain.DefineDynamicAssembly(myAsmName,
+                                                        AssemblyBuilderAccess.RunAndSave);
+        // Generate a persistable single-module assembly.
+        ModuleBuilder myModBuilder =
+            myAsmBuilder.DefineDynamicModule(myAsmName.Name, myAsmName.Name + ".dll");
+
+        //var assemblies = myDomain.GetAssemblies();
+        var assembly = Assembly.Load("BTTest");
+        var types = assembly.GetTypes();
+        foreach (var ty in types)
+        {
+            CreateNewType(myModBuilder, typeof(BaseBTLeaf), ty, $"XNode.BTTree.Actions.{ty.Name}");
+        }
+        // Save the assembly so it can be examined with Ildasm.exe,
+        // or referenced by a test program.
+        myAsmBuilder.Save(myAsmName.Name + ".dll");
+    }
+
+    private static void CreateNewType(ModuleBuilder myModBuilder, Type parent, Type target, string typeName)
+    {
+        TypeBuilder myTypeBuilder = myModBuilder.DefineType(typeName,
+                                                TypeAttributes.Public);
+        myTypeBuilder.SetParent(parent);
+
+        foreach (var field in target.GetFields())
+        {
+            FieldBuilder customerNameBldr = myTypeBuilder.DefineField(field.Name,
+                                                            field.FieldType,
+                                                            FieldAttributes.Public);
+        }
+        myTypeBuilder.CreateType();
     }
 }

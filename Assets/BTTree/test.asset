@@ -55,6 +55,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   Parent: {fileID: 0}
+  TypeName: BTTestAction
   value1: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -68,6 +69,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718fd3dbb5437f04fa5a6834d31b9aa3, type: 3}
   m_Name: test
   m_EditorClassIdentifier: 
-  nodes:
-  - {fileID: -7940617784182793644}
+  nodes: []
   root: {fileID: 0}
