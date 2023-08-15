@@ -15,18 +15,18 @@ public class Test : MonoBehaviour
 
         PropertyInfo[] custDataPropInfo = custDataType.GetProperties();
         
-        foreach (PropertyInfo pInfo in custDataPropInfo)
-        {
-            Debug.LogFormat("Property '{0}' created!", pInfo.ToString());
-        }
+        //foreach (PropertyInfo pInfo in custDataPropInfo)
+        //{
+        //    Debug.LogFormat("Property '{0}' created!", pInfo.ToString());
+        //}
 
-        FieldInfo[] custDataFieldInfo = custDataType.GetFields();
-        foreach (FieldInfo fInfo in custDataFieldInfo)
-        {
-            Debug.LogFormat("Field '{0}' created!", fInfo.ToString());
-        }
+        //FieldInfo[] custDataFieldInfo = custDataType.GetFields();
+        //foreach (FieldInfo fInfo in custDataFieldInfo)
+        //{
+        //    Debug.LogFormat("Field '{0}' created!", fInfo.ToString());
+        //}
 
-        Debug.LogFormat("---");
+        //Debug.LogFormat("---");
         // Note that when invoking a property, you need to use the proper BindingFlags -
         // BindingFlags.SetProperty when you invoke the "set" behavior, and
         // BindingFlags.GetProperty when you invoke the "get" behavior. Also note that
