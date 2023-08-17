@@ -1,0 +1,11 @@
+namespace FBTest;
+
+table Monster {
+	id:int;
+}
+
+table MonsterList {
+	list:[Monster];
+}
+
+root_type MonsterList;

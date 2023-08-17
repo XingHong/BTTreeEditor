@@ -6,6 +6,7 @@ using FlexBuffers;
 using UnityEngine.Profiling;
 using System.IO;
 
+
 public class JsonVsFlexBuffers : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -63,13 +64,11 @@ public class JsonVsFlexBuffers : MonoBehaviour
                 arr[(int)i] = i;
             }
 
-            string path = Path.Combine(Application.dataPath, "Resource/data.json");
-            Debug.Log(path);
+            string path = Path.Combine(Application.dataPath, "Resources/data.json");
             File.WriteAllText(path, arr.ToString());
 
             var buffer = JsonToFlexBufferConverter.Convert(arr.ToString());
-            string bytesPath = Path.Combine(Application.dataPath, "Resource/data.txt");
-            Debug.Log(bytesPath);
+            string bytesPath = Path.Combine(Application.dataPath, "Resources/data.txt");
             File.WriteAllBytes(bytesPath, buffer);
         }
     }
