@@ -1,0 +1,12 @@
+namespace MyGame.Sample;
+
+table Vec3 {
+  x:float;
+  y:float;
+  z:float;
+}
+
+table CommonRoot {
+}
+
+root_type CommonRoot;

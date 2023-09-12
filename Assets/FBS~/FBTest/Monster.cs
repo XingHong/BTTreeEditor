@@ -34,6 +34,29 @@ public struct Monster : IFlatbufferObject
     int o = builder.EndTable();
     return new Offset<FBTest.Monster>(o);
   }
+  public MonsterT UnPack() {
+    var _o = new MonsterT();
+    this.UnPackTo(_o);
+    return _o;
+  }
+  public void UnPackTo(MonsterT _o) {
+    _o.Id = this.Id;
+  }
+  public static Offset<FBTest.Monster> Pack(FlatBufferBuilder builder, MonsterT _o) {
+    if (_o == null) return default(Offset<FBTest.Monster>);
+    return CreateMonster(
+      builder,
+      _o.Id);
+  }
+}
+
+public class MonsterT
+{
+  public int Id { get; set; }
+
+  public MonsterT() {
+    this.Id = 0;
+  }
 }
 
 

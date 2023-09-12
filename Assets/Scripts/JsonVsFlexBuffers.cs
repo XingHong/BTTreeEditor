@@ -18,15 +18,29 @@ public class JsonVsFlexBuffers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Profiler.BeginSample("simple json import");
+        //var txt = Resources.Load<TextAsset>("dataJson").text;
+        //JSON.Parse(txt);
+        //Profiler.EndSample();
+
+        //Profiler.BeginSample("FlexBuffer import");
+        //var bytes = Resources.Load<TextAsset>("data").bytes;
+        //FlxValue val = FlxValue.FromBytes(bytes);
+        //Profiler.EndSample();
+
+        var txt = Resources.Load<TextAsset>("fbjsondata").text;
         Profiler.BeginSample("simple json import");
-        var txt = Resources.Load<TextAsset>("dataJson").text;
         JSON.Parse(txt);
         Profiler.EndSample();
 
-        Profiler.BeginSample("FlexBuffer import");
-        var bytes = Resources.Load<TextAsset>("data").bytes;
+        Profiler.BeginSample("FlexBuffer json import");
+        var bytes = JsonToFlexBufferConverter.Convert(txt);
         FlxValue val = FlxValue.FromBytes(bytes);
         Profiler.EndSample();
+        //var map = val["at"].AsMap;
+        //map.KeyIndex()
+        //var typ = map["a"].ValueType;
+
         //JSONArray arr = new JSONArray();
         //for (long i = 0; i < 100000; ++i)
         //{

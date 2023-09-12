@@ -43,6 +43,44 @@ public struct MonsterList : IFlatbufferObject
   }
   public static void FinishMonsterListBuffer(FlatBufferBuilder builder, Offset<FBTest.MonsterList> offset) { builder.Finish(offset.Value); }
   public static void FinishSizePrefixedMonsterListBuffer(FlatBufferBuilder builder, Offset<FBTest.MonsterList> offset) { builder.FinishSizePrefixed(offset.Value); }
+  public MonsterListT UnPack() {
+    var _o = new MonsterListT();
+    this.UnPackTo(_o);
+    return _o;
+  }
+  public void UnPackTo(MonsterListT _o) {
+    _o.List = new List<FBTest.MonsterT>();
+    for (var _j = 0; _j < this.ListLength; ++_j) {_o.List.Add(this.List(_j).HasValue ? this.List(_j).Value.UnPack() : null);}
+  }
+  public static Offset<FBTest.MonsterList> Pack(FlatBufferBuilder builder, MonsterListT _o) {
+    if (_o == null) return default(Offset<FBTest.MonsterList>);
+    var _list = default(VectorOffset);
+    if (_o.List != null) {
+      var __list = new Offset<FBTest.Monster>[_o.List.Count];
+      for (var _j = 0; _j < __list.Length; ++_j) { __list[_j] = FBTest.Monster.Pack(builder, _o.List[_j]); }
+      _list = CreateListVector(builder, __list);
+    }
+    return CreateMonsterList(
+      builder,
+      _list);
+  }
+}
+
+public class MonsterListT
+{
+  public List<FBTest.MonsterT> List { get; set; }
+
+  public MonsterListT() {
+    this.List = null;
+  }
+  public static MonsterListT DeserializeFromBinary(byte[] fbBuffer) {
+    return MonsterList.GetRootAsMonsterList(new ByteBuffer(fbBuffer)).UnPack();
+  }
+  public byte[] SerializeToBinary() {
+    var fbb = new FlatBufferBuilder(0x10000);
+    MonsterList.FinishMonsterListBuffer(fbb, MonsterList.Pack(fbb, this));
+    return fbb.DataBuffer.ToSizedArray();
+  }
 }
 
 

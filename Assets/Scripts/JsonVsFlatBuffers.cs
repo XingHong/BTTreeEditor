@@ -56,7 +56,7 @@ public class JsonVsFlatBuffers : MonoBehaviour
             for (int i = 0; i < 100000; ++i)
             {
                 JSONObject obj = new JSONObject();
-                obj["id"] = i;
+                obj["id"] = 100000;
                 arr[i] = obj;
             }
             root["list"] = arr;
