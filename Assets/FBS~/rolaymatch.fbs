@@ -1,0 +1,196 @@
+namespace Royal.Scenes.Game.Utils.FlatLevel;
+
+table FTiledLevel {
+    Name:string;
+    Move:int;
+    Goals:[FGoalData];
+    Grid:FTiledGrid;
+    Predefined:[FTiledPredefined];
+    Sets:[FTiledSet];
+    Colors:[int];
+    Counts:[FItemCount];
+    PotionColors:[FPotionColor];
+    LowMatch:[int];
+    Curtains:[FCurtainData];
+    CupShelves:[FCellGroupData];
+    SoilGroups:[FCellGroupData];
+    Drills:[FDrillData];
+    LightBulbColorOrder:[int];
+    ChainCount:int;
+    PropellerIgnoresChain:bool;
+    PouchConfig:FPouchConfig;
+    Limits:[FLimitData];
+    PropellerIgnoresDrill:bool;
+    JellyReceivableCellCount:int;
+    HasHoleInGrid:bool;
+    Treasuremaps:[FCellGroupData];
+    Slots:[FSlotConfig];
+    CageCount:int;
+    MagnetGroups:[FMagnetGroupData];
+    Scroll:bool;
+    ConveyorBelts:[FMagnetGroupData];
+    Coils:[FCurtainData];
+    CandyCaneGroups:[FMagnetGroupData];
+    TabletItemGroups:[FCellGroupData];
+    IvyItemGroups:[FMagnetGroupData];
+    BlindsGroups:[FBlindsGroupData];
+    WaterData:FWaterData;
+    ShifterGrids:[FShifterData];
+    PorcelainGroups:[FDirectedPointGroupData];
+}
+
+table FGoalData {
+    Goal:int;
+    Count:int;
+    IsFromSettings:bool;
+    BoardId:int;
+}
+
+table FTiledPredefined {
+    X:int;
+    Y:int;
+    Ids:[int];
+}
+
+table FTiledSet {
+    Name:string;
+    Elements:[FTiledSetElement];
+    CanFall:bool;
+    CreateRatio:int;
+    TargetColumns:[int];
+    BirdMax:int;
+    FrogMax:int;
+    TargetFills:[int];
+    TargetFillRatios:[int];
+    MaxItemCounts:[FTiledSetMaxItemCount];
+}
+
+table FItemCount {
+    Type:int;
+    Count:int;
+    BoardId:int;
+}
+
+table FPotionColor {
+    Colors:[int];
+}
+
+table FCurtainData {
+    Id:int;
+    ColorId:int;
+    Order:int;
+    Target:int;
+    CellCount:int;
+    Width:int;
+    Height:int;
+    MinX:int;
+    MinY:int;
+}
+
+table FDrillData {
+    ColorId:int;
+    MasterTileId:int;
+    MasterPoint:FPoint;
+    Order:int;
+    Target:int;
+}
+
+table FPouchConfig {
+    IsAvailableFalling:bool;
+    LightballRatio:int;
+    TntRatio:int;
+    RocketHorizontalRatio:int;
+    RocketVerticalRatio:int;
+    PropellerRatio:int;
+}
+
+table FWaterData {
+    EnterPoints:FCellGroupData;
+    WaterPoints:FCellGroupData;
+    ExitPoints:FCellGroupData;
+    WaterReceivableCellCount:int;
+    BoardCount:int;
+    SandCellCount:int;
+}
+
+table FPoint {
+    X:int;
+    Y:int;
+}
+
+table FCellGroupData {
+    Cells:[FPoint];
+}
+
+table FTiledGrid {
+    Items:[int];
+    Cells:[FTiledCell];
+    Width:int;
+    Height:int;
+}
+
+table FLimitData {
+    Limit:int;
+    Count:int;
+    BoardId:int;
+}
+
+table FSlotConfig {
+    StartIndex:int;
+    HasLightball:bool;
+    HasRocket:bool;
+    HasTnt:bool;
+    HasPropeller:bool;
+}
+table FMagnetGroupData {
+    MagnetCells:[FMagnetPoint];
+}
+table FBlindsGroupData {
+    Width:int;
+    MagnetCells:[FMagnetPoint];
+}
+table FShifterData {
+    ItemCells:[FPoint];
+    StartMasterIndex:int;
+    EndMasterIndex:int;
+    Start:FDirectedPoint;
+    TurnPoint:FDirectedPoint;
+    End:FDirectedPoint;
+}
+table FDirectedPointGroupData {
+    Cells:[FDirectedPoint];
+}
+table FDirectedPoint {
+    Point:FPoint;
+    Direction:int;
+}
+table FTiledSetElement {
+    Id:int;
+    CreateRatio:int;
+}
+table FTiledSetMaxItemCount {
+    Id:int;
+    MaxCount:int;
+}
+table FMagnetPoint {
+    Cell:FPoint;
+    IsHead:bool;
+    DirectionTiledId:int;
+}
+table FTiledCell {
+    FillType:int;
+    IsPredefined:bool;
+    Grass:int;
+    Honey:int;
+    Curtain:int;
+    Chain:int;
+    Roof:int;
+    Jelly:int;
+    Treasuremap:int;
+    Ceramic:int;
+    MushroomSoil:int;
+    Blinds:int;
+    WaterSoil:int;
+}
+ 
+root_type FTiledLevel;

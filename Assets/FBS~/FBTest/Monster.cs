@@ -19,43 +19,34 @@ public struct Monster : IFlatbufferObject
   public void __init(int _i, ByteBuffer _bb) { __p = new Table(_i, _bb); }
   public Monster __assign(int _i, ByteBuffer _bb) { __init(_i, _bb); return this; }
 
-  public int Id { get { int o = __p.__offset(4); return o != 0 ? __p.bb.GetInt(o + __p.bb_pos) : (int)0; } }
+  public string T2 { get { int o = __p.__offset(4); return o != 0 ? __p.__string(o + __p.bb_pos) : null; } }
+#if ENABLE_SPAN_T
+  public Span<byte> GetT2Bytes() { return __p.__vector_as_span<byte>(4, 1); }
+#else
+  public ArraySegment<byte>? GetT2Bytes() { return __p.__vector_as_arraysegment(4); }
+#endif
+  public byte[] GetT2Array() { return __p.__vector_as_array<byte>(4); }
+  public int Id { get { int o = __p.__offset(6); return o != 0 ? __p.bb.GetInt(o + __p.bb_pos) : (int)0; } }
+  public int Id2 { get { int o = __p.__offset(8); return o != 0 ? __p.bb.GetInt(o + __p.bb_pos) : (int)0; } }
 
   public static Offset<FBTest.Monster> CreateMonster(FlatBufferBuilder builder,
-      int id = 0) {
-    builder.StartTable(1);
+      StringOffset t2Offset = default(StringOffset),
+      int id = 0,
+      int id2 = 0) {
+    builder.StartTable(3);
+    Monster.AddId2(builder, id2);
     Monster.AddId(builder, id);
+    Monster.AddT2(builder, t2Offset);
     return Monster.EndMonster(builder);
   }
 
-  public static void StartMonster(FlatBufferBuilder builder) { builder.StartTable(1); }
-  public static void AddId(FlatBufferBuilder builder, int id) { builder.AddInt(0, id, 0); }
+  public static void StartMonster(FlatBufferBuilder builder) { builder.StartTable(3); }
+  public static void AddT2(FlatBufferBuilder builder, StringOffset t2Offset) { builder.AddOffset(0, t2Offset.Value, 0); }
+  public static void AddId(FlatBufferBuilder builder, int id) { builder.AddInt(1, id, 0); }
+  public static void AddId2(FlatBufferBuilder builder, int id2) { builder.AddInt(2, id2, 0); }
   public static Offset<FBTest.Monster> EndMonster(FlatBufferBuilder builder) {
     int o = builder.EndTable();
     return new Offset<FBTest.Monster>(o);
-  }
-  public MonsterT UnPack() {
-    var _o = new MonsterT();
-    this.UnPackTo(_o);
-    return _o;
-  }
-  public void UnPackTo(MonsterT _o) {
-    _o.Id = this.Id;
-  }
-  public static Offset<FBTest.Monster> Pack(FlatBufferBuilder builder, MonsterT _o) {
-    if (_o == null) return default(Offset<FBTest.Monster>);
-    return CreateMonster(
-      builder,
-      _o.Id);
-  }
-}
-
-public class MonsterT
-{
-  public int Id { get; set; }
-
-  public MonsterT() {
-    this.Id = 0;
   }
 }
 
@@ -65,7 +56,9 @@ static public class MonsterVerify
   static public bool Verify(Google.FlatBuffers.Verifier verifier, uint tablePos)
   {
     return verifier.VerifyTableStart(tablePos)
-      && verifier.VerifyField(tablePos, 4 /*Id*/, 4 /*int*/, 4, false)
+      && verifier.VerifyString(tablePos, 4 /*T2*/, false)
+      && verifier.VerifyField(tablePos, 6 /*Id*/, 4 /*int*/, 4, false)
+      && verifier.VerifyField(tablePos, 8 /*Id2*/, 4 /*int*/, 4, false)
       && verifier.VerifyTableEnd(tablePos);
   }
 }

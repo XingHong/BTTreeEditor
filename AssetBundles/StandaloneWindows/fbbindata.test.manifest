@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 141048597
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 5e754ccb3845bb24d4efe6d58ad1f409
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Resources/fbbindata.txt
+Dependencies: []

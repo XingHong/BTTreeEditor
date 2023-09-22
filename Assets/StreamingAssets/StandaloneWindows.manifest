@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 3347240576
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: fbbindata.test
+      Dependencies: {}

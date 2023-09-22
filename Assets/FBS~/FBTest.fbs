@@ -1,7 +1,9 @@
 namespace FBTest;
 
-table Monster {
+table Monster {	
+	t2:string;
 	id:int;
+	id2:int;
 }
 
 table MonsterList {

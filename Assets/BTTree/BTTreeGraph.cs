@@ -26,7 +26,7 @@ namespace XNode.BTTree
 			string jsonStr = finalData.ToString() + Environment.NewLine;
 			sw.Write(jsonStr);
 			sw.Close();
-			AssetDatabase.Refresh();
+			//AssetDatabase.Refresh();
 		}
     }
 }
